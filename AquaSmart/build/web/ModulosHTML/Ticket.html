@@ -17,6 +17,14 @@
         <h1>AquaSmart - Gestión de Tickets</h1>
     </header>
     <br><br>
+       <!-- Buscador -->
+        <div class="container text-center">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar ticket..." onkeyup="search()">
+            </div>
+        </div>
+       
     <div class="container text-center">
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registroModal">
             <i class="bi bi-plus-circle"></i> Registrar Ticket
@@ -39,15 +47,21 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Total:</label>
-                            <input type="number" id="txtTotal" class="form-control" required>
+                            <input type="number" id="txtTotal" step="any" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Subtotal:</label>
-                            <input type="number" id="txtSubtotal" class="form-control" required>
+                            <input type="number" id="txtSubtotal" step="any" class="form-control" required>
+                        </div>
+                                 <div class="mb-3">
+                            <label class="form-label">Tarjeta:</label>
+                            <select id="selectTarjeta" class="form-select">
+                                <option value="">Seleccione una tarjeta (opcional)</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Cliente:</label>
-                            <select id="selectCliente" class="form-select" required>
+                            <select id="selectCliente" class="form-select" required disabled>
                                 <option value="">Seleccione un cliente</option>
                             </select>
                         </div>
@@ -55,12 +69,6 @@
                             <label class="form-label">Empleado:</label>
                             <select id="selectEmpleado" class="form-select" required>
                                 <option value="">Seleccione un empleado</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tarjeta:</label>
-                            <select id="selectTarjeta" class="form-select">
-                                <option value="">Seleccione una tarjeta (opcional)</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-success w-100">Registrar Ticket</button>

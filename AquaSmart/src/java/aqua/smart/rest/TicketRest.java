@@ -4,6 +4,7 @@ package aqua.smart.rest;
 import aqua.smart.controller.TicketController;
 import aqua.smart.model.Ticket;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
@@ -30,7 +31,7 @@ public class TicketRest {
             tc.insertTicket(t);
             String out = gson.toJson(t);
             return Response.status(Response.Status.CREATED).entity(out).build();
-        } catch (Exception e) {
+        } catch (JsonSyntaxException e) {
             e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("{\"error\":\"Error en el servidor\"}")

@@ -15,13 +15,14 @@ public class CategoriaController {
     public Categoria insertCategoria(Categoria ca) {
         System.out.println("lo que llega al statement");
         System.out.println(ca.getNombre());
-        String query = "call sp_insertCategoria(?,?)";
+        String query = "call sp_insertCategoria(?,?,?)";
         try {
             MySQL connMysql = new MySQL();
             Connection conn = connMysql.open();
             CallableStatement pstm = (CallableStatement) conn.prepareCall(query);
             pstm.setString(1, ca.getNombre());
             pstm.setString(2, ca.getDescripcion());
+            pstm.setDouble(3, ca.getPrecio());
             pstm.execute();
             System.out.println("Insert Correcto");
             pstm.close();
@@ -54,11 +55,12 @@ public class CategoriaController {
         ca.setNombre(rs.getString("nombre"));
         ca.setDescripcion(rs.getString("descripcion"));
         ca.setEstatus(rs.getInt("estatus"));
+        ca.setPrecio(rs.getDouble("precio"));
         return ca;
     }
 
     public void update(Categoria ca) throws SQLException {
-        String query = "call sp_updateCategoria(?,?,?,?)";
+        String query = "call sp_updateCategoria(?,?,?,?,?)";
         Connection conn = null;
         CallableStatement cstm = null;
 
@@ -70,6 +72,7 @@ public class CategoriaController {
         pstm.setString(2, ca.getNombre());
         pstm.setString(3, ca.getDescripcion());
         pstm.setInt(4, ca.getEstatus());
+            pstm.setDouble(5, ca.getPrecio());
         pstm.execute();
         System.out.println("Actualización Correcta");
         cstm.close();

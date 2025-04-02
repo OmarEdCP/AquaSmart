@@ -29,6 +29,7 @@ async function cargarCategorias() {
                 </div>
                 <h4 class="mt-2">${categoria.nombre}</h4>
                 <p class="text-muted">${estatusTexto}</p>
+            <span class="badge bg-info">Precio: $${categoria.precio}</span>
             </div>
 
             <!-- Parte trasera de la tarjeta -->
@@ -39,6 +40,9 @@ async function cargarCategorias() {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><p><i class="bi bi-card-text"></i> <strong>Nombre:</strong> ${categoria.nombre}</p></li>
                     <li class="list-group-item"><p><i class="bi bi-text-paragraph"></i> <strong>Descripción:</strong> ${categoria.descripcion || 'No especificada'}</p></li>
+                   <li class="list-group-item">
+                                    <p><i class="bi bi-cash"></i> <strong>Total:</strong> $${categoria.precio}</p>
+                                </li>
                     <li class="list-group-item status-item ${estatusClase}"><p><i class="bi bi-toggle-on"></i> <strong>Estatus:</strong> ${estatusTexto}</p></li>
                 </ul>
                 <div class="card-footer">
@@ -106,7 +110,8 @@ document.getElementById("categoriaForm").addEventListener("submit", async functi
     let ruta = "/AquaSmart/api/categoria/insertCategoria";
     let categoria={
         nombre: document.getElementById("txtNombre").value,
-        descripcion: document.getElementById("txtDescripcion").value    
+        descripcion: document.getElementById("txtDescripcion").value  ,
+        precio: parseFloat(document.getElementById("txtPrecio").value)
     };
 
     try {
@@ -136,6 +141,7 @@ document.getElementById("categoriaForm").addEventListener("submit", async functi
         // Limpiar el formulario
         document.getElementById("txtNombre").value = "";
         document.getElementById("txtDescripcion").value = "";
+        document.getElementById("txtPrecio").value = "";
        
     } catch (error) {
         console.error("Error:", error);
@@ -154,7 +160,8 @@ document.getElementById("btnActualizar").addEventListener("click", async functio
         idCategoria: parseInt(document.getElementById("txtIdCategoriaEdit").value),
         nombre: document.getElementById("txtNombreEdit").value,
         descripcion: document.getElementById("txtDescripcionEdit").value,
-        estatus: parseInt(document.getElementById("selectEstatusEdit").value)
+        estatus: parseInt(document.getElementById("selectEstatusEdit").value),
+         precio: parseFloat(document.getElementById("txtPrecioEdit").value)
     };
 
      try {
@@ -187,6 +194,7 @@ document.getElementById("btnActualizar").addEventListener("click", async functio
                 document.getElementById("txtNombreEdit").value = "";
                 document.getElementById("txtDescripcionEdit").value = "";
                 document.getElementById("selectEstatusEdit").value = "";
+                document.getElementById("txtPrecioEdit").value = "";
         
     } catch (error) {
         console.error("Error:", error);

@@ -44,23 +44,20 @@
     <br><br><br><br>
 
     <!-- Controles principales -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-6">
+
+             <div class="container text-center">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
                     <input type="text" id="searchInput" class="form-control" placeholder="Buscar categoría..." onkeyup="search()">
                 </div>
             </div>
-            <div class="col-md-6 text-end">
+    
+            <div class="container text-center">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registroModal">
                     <i class="bi bi-plus-circle"></i> Nueva Categoría
                 </button>
             </div>
-        </div>
-    </div>
-
-    <!-- Contenedor de Tarjetas -->
+        
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="tablaRegistros"></div>
     </div>
@@ -88,6 +85,10 @@
                                 <i class="bi bi-text-paragraph"></i> Descripción:
                             </label>
                             <textarea class="form-control" id="txtDescripcion" name="descripcion" rows="3"></textarea>
+                        </div>
+                         <div class="mb-3">
+                            <label class="form-label">Precio:</label>
+                            <input type="number" id="txtPrecio" step="any" class="form-control" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -132,6 +133,10 @@
                                 <i class="bi bi-text-paragraph"></i> Descripción:
                             </label>
                             <textarea class="form-control" id="txtDescripcionEdit" rows="3"></textarea>
+                        </div>
+                                                 <div class="mb-3">
+                            <label class="form-label">Precio:</label>
+                            <input type="number" id="txtPrecioEdit" step="any" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="selectEstatusEdit" class="form-label">

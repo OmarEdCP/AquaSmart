@@ -7,15 +7,17 @@ public class Categoria {
     private String nombre;
     private String descripcion;
     private int estatus;
+    private Double precio;
 
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, String nombre, String descripcion, int estatus) {
+    public Categoria(int idCategoria, String nombre, String descripcion, int estatus, Double precio) {
         this.idCategoria = idCategoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estatus = estatus;
+        this.precio = precio;
     }
 
     public int getIdCategoria() {
@@ -48,6 +50,14 @@ public class Categoria {
 
     public void setEstatus(int estatus) {
         this.estatus = estatus;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     

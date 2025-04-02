@@ -27,7 +27,7 @@ async function cargarTickets() {
                             <i class="bi bi-receipt service-icon"></i>
                             <h4>Ticket #${ticket.idTicket}</h4>
                             <p class="text-muted">Fecha: ${fechaMostrar}</p>
-                            <span class="badge bg-info">Total: $${ticket.total.toFixed(2)}</span>
+                            <span class="badge bg-info">Total: $${Number(ticket.total).toFixed(2)}</span>
                         </div>
                         <div class="flip-card-back text-center">
                             <div class="card-header">
@@ -38,10 +38,10 @@ async function cargarTickets() {
                                     <p><i class="bi bi-calendar"></i> <strong>Fecha:</strong> ${fechaMostrar}</p>
                                 </li>
                                 <li class="list-group-item">
-                                    <p><i class="bi bi-tag"></i> <strong>Subtotal:</strong> $${ticket.subtotal.toFixed(2)}</p>
+                                    <p><i class="bi bi-tag"></i> <strong>Subtotal:</strong> $${ticket.subtotal ? Number(ticket.subtotal).toFixed(2) : '0.00'}</p>
                                 </li>
                                 <li class="list-group-item">
-                                    <p><i class="bi bi-cash"></i> <strong>Total:</strong> $${ticket.total.toFixed(2)}</p>
+                                    <p><i class="bi bi-cash"></i> <strong>Total:</strong> $${Number(ticket.total).toFixed(2)}</p>
                                 </li>
                                 <li class="list-group-item">
                                     <p><i class="bi bi-person"></i> <strong>Cliente:</strong> ${ticket.cliente?.persona?.nombre || 'Sin cliente'} ${ticket.cliente?.persona?.apellidoP || ''}</p>
@@ -50,7 +50,7 @@ async function cargarTickets() {
                                     <p><i class="bi bi-person-badge"></i> <strong>Empleado:</strong> ${ticket.empleado?.persona?.nombre || 'No asignado'}</p>
                                 </li>
                                 <li class="list-group-item">
-                                    <p><i class="bi bi-credit-card"></i> <strong>Tarjeta:</strong> ${ticket.tarjeta?.numTarjeta ? `•••• •••• •••• ${ticket.tarjeta.numTarjeta.slice(-4)}` : 'Sin tarjeta'}</p>
+                                    <p><i class="bi bi-credit-card"></i> <strong>Tarjeta:</strong> ${ticket.numTarjeta?.numTarjeta ? `•••• •••• •••• ${ticket.numTarjeta.numTarjeta.slice(-4)}` : 'Sin tarjeta'}</p>
                                 </li>
                             </ul>
                             <div class="card-footer">
@@ -61,7 +61,7 @@ async function cargarTickets() {
                                     data-total="${ticket.total}"
                                     data-cliente="${ticket.cliente?.idCliente || ''}"
                                     data-empleado="${ticket.empleado?.idEmpleado || ''}"
-                                    data-tarjeta="${ticket.tarjeta?.numTarjeta || ''}">
+                                    data-tarjeta="${ticket.numTarjeta?.numTarjeta || ''}">
                                     <i class="bi bi-pencil-square"></i> Editar
                                 </button>
                             </div>
@@ -115,8 +115,8 @@ async function cargarSelects() {
             selectCliente.appendChild(option.cloneNode(true));
             selectClienteEdit.appendChild(option);
         });
-        
-               // Cargar empleados
+
+        // Cargar empleados
         const resEmpleados = await fetch('/AquaSmart/api/empleado/getAllEmpleado');
         const empleados = await resEmpleados.json();
         const selectEmpleado = document.getElementById("selectEmpleado");
@@ -129,24 +129,47 @@ async function cargarSelects() {
             selectEmpleado.appendChild(option.cloneNode(true));
             selectEmpleadoEdit.appendChild(option);
         });
-        
-                  // Cargar tarjetas
+
+        // Mapa para asociar tarjetas con clientes
+        const tarjetaClienteMap = new Map();
+
+        // Cargar tarjetas
         const resTarjetas = await fetch('/AquaSmart/api/tarjeta/getAllTarjeta');
         const tarjetas = await resTarjetas.json();
         const selectTarjeta = document.getElementById("selectTarjeta");
         const selectTarjetaEdit = document.getElementById("selectTarjetaEdit");
 
         tarjetas.forEach(tar => {
+            const ultimosDigitos = tar.numTarjeta.slice(-4);
+
+            // Guardar relación tarjeta-cliente
+            if (tar.cliente) {
+                tarjetaClienteMap.set(tar.numTarjeta, tar.cliente.idCliente);
+            }
+
             const option = document.createElement("option");
             option.value = tar.numTarjeta;
-            option.textContent = `${tar.numTarjeta}`;
+            option.textContent = `•••• •••• •••• ${ultimosDigitos}`;
+
             selectTarjeta.appendChild(option.cloneNode(true));
             selectTarjetaEdit.appendChild(option);
         });
+
+        // Evento para seleccionar el cliente al elegir una tarjeta
+        selectTarjeta.addEventListener("change", function () {
+            const numTarjetaSeleccionada = selectTarjeta.value;
+            const idCliente = tarjetaClienteMap.get(numTarjetaSeleccionada);
+
+            if (idCliente) {
+                selectCliente.value = idCliente;
+            }
+        });
+
     } catch (error) {
         console.error("Error al cargar selects:", error);
     }
 }
+
 
 // Evento para el formulario de registro
 document.getElementById("ticketForm").addEventListener("submit", async function (e) {

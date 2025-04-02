@@ -142,25 +142,21 @@ public Ticket fill(ResultSet rs) throws SQLException {
     cli.setIdCliente(rs.getInt("idCliente"));
     cli.setPersona(pe); 
 
-    // TARJETA (Manejo de posibles valores NULL)
-    Tarjeta tar = null;
-    if (rs.getString("numTarjeta") != null) {
-        tar = new Tarjeta();
+    Tarjeta tar = new Tarjeta();
         tar.setNumTarjeta(rs.getString("numTarjeta"));
         tar.setCvv(rs.getString("cvv"));
         tar.setMes(rs.getString("mes"));
-        tar.setAnio(rs.getString("anio"));
+        tar.setAnio(rs.getString("año"));
         tar.setNombreTitular(rs.getString("nombreTitular"));
-    }
 
-    // TICKET
     Ticket t = new Ticket();
-    t.setIdTicket(rs.getInt("idTicket")); // Faltaba asignar el ID del ticket
+    t.setIdTicket(rs.getInt("idTicket"));
     t.setFecha(rs.getTimestamp("fechaTicket"));
     t.setTotal(rs.getDouble("total"));
+    t.setSubtotal(rs.getDouble("subtotal"));
     t.setCliente(cli);
     t.setEmpleado(em);
-    t.setNumTarjeta(tar); // Puede ser null si no tiene tarjeta
+    t.setNumTarjeta(tar); 
 
     return t;
 }
