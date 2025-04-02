@@ -85,7 +85,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="txtEdad" class="form-label"><i class="bi bi-calendar"></i> Edad:</label>
-                                <input type="number" class="form-control" id="txtEdad" required>
+                                <input type="number" class="form-control" id="txtEdad" min="18" max="100" required>
                             </div>
                             <div class="mb-3">
                                 <label for="txtEmail" class="form-label"><i class="bi bi-envelope"></i> Email:</label>
@@ -93,7 +93,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="txtTelefono" class="form-label"><i class="bi bi-phone"></i> Teléfono:</label>
-                                <input type="tel" class="form-control" id="txtTelefono" required>
+                                <input type="tel" class="form-control" id="txtTelefono" min="10" max="10" required>
                             </div>
                             <div class="mb-3">
                                 <label for="selectCiudad" class="form-label"><i class="bi bi-geo-alt"></i> Ciudad:</label>
@@ -256,8 +256,10 @@
         </footer>
         <script src="../JS/Cliente.js" type="text/javascript"></script>
                 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-        <script>
-                        AOS.init();
-        </script>
+       <script>
+           AOS.init();
+</script>
+
+
     </body>
 </html>

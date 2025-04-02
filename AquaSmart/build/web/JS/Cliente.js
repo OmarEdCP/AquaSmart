@@ -4,6 +4,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarClientes();
     actualizarOpcionesCiudades();
+    validarForm();
 });
 let fotoBase64 = '../img/nada.jpg'; // Para nuevos usuarios
 let fotoBase64Edit = '../img/nada.jpg';  // Para edición
@@ -35,6 +36,9 @@ document.getElementById('txtFotoEdit').addEventListener('change', function (even
 document.getElementById("clienteForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
+if(!validarForm()){
+    return;
+}
     let ruta = "/AquaSmart/api/cliente/insertCliente";
     let v_nombreP = document.getElementById("txtNombre").value;
     let v_apellidoM = document.getElementById("txtApellidoM").value;
@@ -496,4 +500,110 @@ async function actualizarOpcionesCiudades() {
         selectCiudad.appendChild(option);
         selectCiudadU.appendChild(optionU);
     });
+}
+
+async function validarForm(){
+    let camposTexto = ["txtNombre", "txtApellidoP", "txtApellidoM", "txtNombreEdit", "txtApellidoPEdit", "txtApellidoMEdit"];
+        let regexTexto = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/; // Solo letras y espacios
+        let regexUsuario = /^[A-Za-z0-9]+$/; // Permite letras y números
+        let regexTelefono = /^\d{10}$/; // Exactamente 10 dígitos
+        let regexContrasenia = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/; // 8 caracteres, 1 mayúscula, 1 número, 1 especial
+
+        // Función para evitar la escritura de números y convertir a mayúsculas
+        function validarTexto(event) {
+            let input = event.target;
+            input.value = input.value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÑ\s]/g, "");
+        }
+
+        // Agregar evento a los campos de texto en Registro y Edición
+        camposTexto.forEach(id => {
+            document.getElementById(id).addEventListener("input", validarTexto);
+        });
+
+        // Restricción para teléfono (máximo 10 dígitos) en Registro y Edición
+        ["txtTelefono", "txtTelefonoEdit"].forEach(id => {
+            document.getElementById(id).addEventListener("input", function () {
+                this.value = this.value.replace(/\D/g, "").slice(0, 10);
+            });
+        });
+
+        // Restricción para edad (entre 18 y 120) en Registro y Edición
+        ["txtEdad", "txtEdadEdit"].forEach(id => {
+            document.getElementById(id).addEventListener("input", function () {
+                let edad = parseInt(this.value, 10);
+                if (isNaN(edad) || edad < 18) this.value = "18";
+                if (edad > 120) this.value = "120";
+            });
+        });
+
+        // Función para mostrar mensajes con SweetAlert2
+        function mostrarAlerta(titulo, mensaje, icono) {
+            Swal.fire({
+                title: titulo,
+                text: mensaje,
+                icon: icono,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK"
+            });
+        }
+
+        // Validación final del formulario de Registro y Edición
+        function validarFormulario(event, esEdicion) {
+            event.preventDefault();
+
+            let prefix = esEdicion ? "Edit" : ""; // Para diferenciar entre Registro y Edición
+            let nombre = document.getElementById("txtNombre" + prefix).value.trim();
+            let apellidoP = document.getElementById("txtApellidoP" + prefix).value.trim();
+            let apellidoM = document.getElementById("txtApellidoM" + prefix).value.trim();
+            let edad = document.getElementById("txtEdad" + prefix).value;
+            let telefono = document.getElementById("txtTelefono" + prefix).value.trim();
+            let usuario = document.getElementById("txtNombreU" + prefix).value.trim();
+            let contrasenia = document.getElementById("txtContrasenia" + prefix).value.trim();
+
+            if (!regexTexto.test(nombre) || !regexTexto.test(apellidoP) || !regexTexto.test(apellidoM)) {
+                mostrarAlerta("Error", "El nombre y los apellidos solo pueden contener letras y espacios.", "error");
+                return;
+            }
+
+            if (!regexTelefono.test(telefono)) {
+                mostrarAlerta("Error", "El teléfono debe contener exactamente 10 dígitos numéricos.", "error");
+                return;
+            }
+
+            if (!regexUsuario.test(usuario)) {
+                mostrarAlerta("Error", "El usuario solo puede contener letras y números.", "error");
+                return;
+            }
+
+            if (!regexContrasenia.test(contrasenia)) {
+                mostrarAlerta("Error", "La contraseña debe tener mínimo 8 caracteres, incluyendo al menos una mayúscula, un número y un carácter especial.", "error");
+                return;
+            }
+
+            // Si todo es válido, confirmamos el envío con SweetAlert2
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "¿Deseas enviar el formulario?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, enviar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("¡Enviado!", "El formulario se ha enviado correctamente.", "success");
+                    event.target.submit(); // Enviar formulario
+                }
+            });
+        }
+
+        // Agregar validación a ambos formularios
+        document.getElementById("clienteForm").addEventListener("submit", function (event) {
+            validarFormulario(event, false);
+        });
+
+        document.getElementById("clienteModal").addEventListener("submit", function (event) {
+            validarFormulario(event, true);
+        });
 }
