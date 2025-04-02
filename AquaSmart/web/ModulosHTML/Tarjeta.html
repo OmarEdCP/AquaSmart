@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AquaSmart - Registro de Tarjetas</title>
+
+        <!-- Bootstrap & Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- jQuery & Bootstrap Bundle -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="../CSS/Tarjeta.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="bg-primary text-white text-center py-3">
+            <nav class="navbar navbar-dark bg-primary fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><h1>AquaSmart - Gestión de Tarjetas</h1></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-primary" id="offcanvasDarkNavbar">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title">AQUASMART!</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../index.html">Home</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br><br><br><br>
+
+        <!-- Buscador -->
+        <div class="container text-center">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar tarjeta..." onkeyup="search()">
+            </div>
+        </div>
+        
+        <div class="container text-center">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registroModal">
+                <i class="bi bi-plus-circle"></i> Registrar Tarjeta
+            </button>
+        </div>
+
+        <!-- Modal de Registro -->
+        <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="bi bi-credit-card"></i> Registrar Tarjeta</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="tarjetaForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="txtNumTarjeta" class="form-label">Número de Tarjeta:</label>
+                                        <input type="text" id="txtNumTarjeta" class="form-control" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="txtNombreTitular" class="form-label">Nombre del Titular:</label>
+                                        <input type="text" id="txtNombreTitular" class="form-control" placeholder="JUAN PEREZ" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectCliente" class="form-label">Cliente:</label>
+                                        <select id="selectCliente" class="form-select" required>
+                                            <option value="">Seleccione un cliente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="selectMes" class="form-label">Mes de Expiración:</label>
+                                                <select id="selectMes" class="form-select" required>
+                                                    <option value="">Mes</option>
+                                                    <option value="01">01 - Enero</option>
+                                                    <option value="02">02 - Febrero</option>
+                                                    <option value="03">03 - Marzo</option>
+                                                    <option value="04">04 - Abril</option>
+                                                    <option value="05">05 - Mayo</option>
+                                                    <option value="06">06 - Junio</option>
+                                                    <option value="07">07 - Julio</option>
+                                                    <option value="08">08 - Agosto</option>
+                                                    <option value="09">09 - Septiembre</option>
+                                                    <option value="10">10 - Octubre</option>
+                                                    <option value="11">11 - Noviembre</option>
+                                                    <option value="12">12 - Diciembre</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="selectAnio" class="form-label">Año de Expiración:</label>
+                                                <select id="selectAnio" class="form-select" required>
+                                                    <option value="">Año</option>
+                                                    <!-- Opciones se llenarán dinámicamente con JavaScript -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="txtCVV" class="form-label">CVV:</label>
+                                        <input type="text" id="txtCVV" class="form-control" placeholder="123" maxlength="3" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 mt-3">
+                                <i class="bi bi-save"></i> Registrar Tarjeta
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="tablaRegistros"></div>
+        </div>
+
+        <!-- Modal de Edición -->
+        <div class="modal fade" id="edicionModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="bi bi-credit-card"></i> Editar Tarjeta</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editarTarjetaForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="txtNumTarjetaEdit" class="form-label">Número de Tarjeta:</label>
+                                        <input type="text" id="txtNumTarjetaEdit" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="txtNombreTitularEdit" class="form-label">Nombre del Titular:</label>
+                                        <input type="text" id="txtNombreTitularEdit" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectClienteEdit" class="form-label">Cliente:</label>
+                                        <select id="selectClienteEdit" class="form-select" required>
+                                            <option value="">Seleccione un cliente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="selectMesEdit" class="form-label">Mes de Expiración:</label>
+                                                <select id="selectMesEdit" class="form-select" required>
+                                                    <option value="">Mes</option>
+                                                    <option value="01">01 - Enero</option>
+                                                    <option value="02">02 - Febrero</option>
+                                                    <option value="03">03 - Marzo</option>
+                                                    <option value="04">04 - Abril</option>
+                                                    <option value="05">05 - Mayo</option>
+                                                    <option value="06">06 - Junio</option>
+                                                    <option value="07">07 - Julio</option>
+                                                    <option value="08">08 - Agosto</option>
+                                                    <option value="09">09 - Septiembre</option>
+                                                    <option value="10">10 - Octubre</option>
+                                                    <option value="11">11 - Noviembre</option>
+                                                    <option value="12">12 - Diciembre</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="selectAnioEdit" class="form-label">Año de Expiración:</label>
+                                                <select id="selectAnioEdit" class="form-select" required>
+                                                    <option value="">Año</option>
+                                                    <!-- Opciones se llenarán dinámicamente con JavaScript -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="txtCVVEdit" class="form-label">CVV:</label>
+                                        <input type="text" id="txtCVVEdit" class="form-control" maxlength="3" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectEstatusEdit" class="form-label">Estatus:</label>
+                                        <select id="selectEstatusEdit" class="form-select" required>
+                                            <option value="1">Activa</option>
+                                            <option value="0">Inactiva</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="btnEliminar">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="button" class="btn btn-warning" id="btnActualizar">
+                            <i class="bi bi-pencil"></i> Actualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../JS/Tarjeta.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
+            
+            // Llenar años de expiración (ejemplo para los próximos 10 años)
+            document.addEventListener('DOMContentLoaded', function() {
+                const currentYear = new Date().getFullYear();
+                const yearSelects = ['selectAnio', 'selectAnioEdit'];
+                
+                yearSelects.forEach(id => {
+                    const select = document.getElementById(id);
+                    for (let i = 0; i < 10; i++) {
+                        const year = currentYear + i;
+                        const option = document.createElement('option');
+                        option.value = year;
+                        option.textContent = year;
+                        select.appendChild(option);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

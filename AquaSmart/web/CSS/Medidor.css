@@ -1,0 +1,213 @@
+
+
+
+/* Estilos para la tarjeta flip */
+.flip-card {
+    background-color: transparent;
+    width: 300px; /* Ancho fijo de la tarjeta */
+    height: 400px; /* Alto fijo de la tarjeta */
+    perspective: 1000px; /* Efecto 3D */
+    margin: 10px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* Gira la tarjeta al hacer hover */
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la parte trasera al inicio */
+    border-radius: 10px;
+    overflow: hidden; /* Evita que el contenido sobresalga */
+}
+
+.flip-card-front {
+    background-color: #007bff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.flip-card-back {
+    background-color: #f8f9fa;
+    color: #333;
+    transform: rotateY(180deg); /* Gira la parte trasera */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Estilos para el contenido de la tarjeta trasera */
+.flip-card-back .card-header,
+.flip-card-back .card-footer {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #ddd;
+}
+
+.flip-card-back .list-group {
+    flex-grow: 1;
+    overflow-y: auto; /* Desplazamiento vertical si el contenido es largo */
+    padding: 10px;
+}
+
+.flip-card-back .list-group-item {
+    border: none;
+    padding: 8px 0;
+    text-align: left;
+}
+
+.flip-card-back .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Estilos para tarjetas inactivas */
+.flip-card.inactive {
+    opacity: 0.5; /* Reduce la visibilidad */
+    transform: scale(0.95); /* Hace la tarjeta un poco más pequeña */
+    filter: grayscale(50%); /* Aplica un efecto gris */
+}
+
+/* Opcional: Cambiar colores en estado inactivo */
+.flip-card.inactive .flip-card-front {
+    background-color: #6c757d; /* Gris oscuro */
+    color: #ccc; /* Texto más tenue */
+}
+
+.flip-card.inactive .flip-card-back {
+    background-color: #dee2e6; /* Gris claro */
+    color: #666; /* Texto menos contrastante */
+}
+
+/* Añade esto a tu CSS existente */
+
+/* Estilos para la parte frontal mejorada */
+.flip-card-front .front-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.flip-card-front .front-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.flip-card-front .front-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.flip-card-front .front-modelo {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.flip-card-front .front-precio {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: baseline;
+}
+
+.flip-card-front .precio-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-right: 5px;
+}
+
+.flip-card-front .precio-currency {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Estilos para la parte trasera mejorada */
+.flip-card-back .card-header {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.flip-card-back .list-group-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+}
+
+.flip-card-back .list-group-item i {
+    width: 20px;
+    text-align: center;
+    color: black
+}
+
+.flip-card-back .status-item.active {
+    color: #28a745;
+    background-color: white;
+}
+
+.flip-card-back .status-item.inactive {
+    color: #6c757d;
+     background-color: white;
+}
+
+.flip-card-back .status-item i {
+    color: inherit;
+}
+
+/* Mejoras de transición */
+.flip-card-inner {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efecto hover más suave */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg) scale(1.02);
+}
+
+/* Botón de editar mejorado */
+.btn-estado {
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-estado:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
