@@ -8,6 +8,7 @@ public class Ticket {
     private Timestamp fecha;
     private Double total;
     private Double subtotal;
+    private int estatus;
     private Cliente cliente;
     private Empleado empleado;
     private Tarjeta numTarjeta;
@@ -15,11 +16,12 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(int idTicket, Timestamp fecha, Double total, Double subtotal, Cliente cliente, Empleado empleado, Tarjeta numTarjeta) {
+    public Ticket(int idTicket, Timestamp fecha, Double total, Double subtotal, int estatus, Cliente cliente, Empleado empleado, Tarjeta numTarjeta) {
         this.idTicket = idTicket;
         this.fecha = fecha;
         this.total = total;
         this.subtotal = subtotal;
+        this.estatus = estatus;
         this.cliente = cliente;
         this.empleado = empleado;
         this.numTarjeta = numTarjeta;
@@ -55,6 +57,14 @@ public class Ticket {
 
     public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
     }
 
     public Cliente getCliente() {

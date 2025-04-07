@@ -154,6 +154,7 @@ public Ticket fill(ResultSet rs) throws SQLException {
     t.setFecha(rs.getTimestamp("fechaTicket"));
     t.setTotal(rs.getDouble("total"));
     t.setSubtotal(rs.getDouble("subtotal"));
+    t.setEstatus(rs.getInt("estatusTicket"));
     t.setCliente(cli);
     t.setEmpleado(em);
     t.setNumTarjeta(tar); 
@@ -164,7 +165,7 @@ public Ticket fill(ResultSet rs) throws SQLException {
 
 
     public void update(Ticket t) throws SQLException {
-        String query = "call sp_updateTicket(?,?,?,?,?,?,?)";
+        String query = "call sp_updateTicket(?,?,?,?,?,?,?,?)";
         Connection conn = null;
         CallableStatement pstm = null;
 
@@ -175,16 +176,17 @@ public Ticket fill(ResultSet rs) throws SQLException {
         pstm.setTimestamp(2, t.getFecha());
         pstm.setDouble(3, t.getTotal());
         pstm.setDouble(4, t.getSubtotal());
-        pstm.setInt(5, t.getEmpleado().getIdEmpleado());
-        pstm.setInt(6, t.getCliente().getIdCliente());
-        pstm.setString(7, t.getNumTarjeta().getNumTarjeta());
+        pstm.setInt(5, t.getEstatus());
+        pstm.setInt(6, t.getEmpleado().getIdEmpleado());
+        pstm.setInt(7, t.getCliente().getIdCliente());
+        pstm.setString(8, t.getNumTarjeta().getNumTarjeta());
 
         pstm.execute();
         pstm.close();
         connMysql.close();
     }
     public void delete(int idTicket) throws SQLException {
-        String query = "call sp_deleteTicket(?)";
+        String query = "call sp_desactiveTicket(?)";
         MySQL connMysql = new MySQL();
         Connection conn = connMysql.open();
         CallableStatement cstm = (CallableStatement) conn.prepareCall(query);

@@ -49,10 +49,11 @@ header .logo {
 }
 /* Full Screen Background */
 body {
-    background: url('../img/fondoApp.jpg') no-repeat center center/cover;
+    background: url('../img/Fondo3_1.jpg') no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+   
 }
 
 /* Form Box Styling */
