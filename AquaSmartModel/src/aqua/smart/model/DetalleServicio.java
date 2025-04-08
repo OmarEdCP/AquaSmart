@@ -1,12 +1,13 @@
 
 package aqua.smart.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class DetalleServicio {
     private int idDetalle;
     private String descripcion;
-    private Date fecha;
+    private Timestamp fecha;
+    private int estatus;
     private Cliente cliente;
     private Lectura lectura;
     private Servicio servicio;
@@ -15,10 +16,11 @@ public class DetalleServicio {
     public DetalleServicio() {
     }
 
-    public DetalleServicio(int idDetalle, String descripcion, Date fecha, Cliente cliente, Lectura lectura, Servicio servicio, Ticket ticket) {
+    public DetalleServicio(int idDetalle, String descripcion, Timestamp fecha, int estatus, Cliente cliente, Lectura lectura, Servicio servicio, Ticket ticket) {
         this.idDetalle = idDetalle;
         this.descripcion = descripcion;
         this.fecha = fecha;
+        this.estatus = estatus;
         this.cliente = cliente;
         this.lectura = lectura;
         this.servicio = servicio;
@@ -41,12 +43,20 @@ public class DetalleServicio {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
     }
 
     public Cliente getCliente() {
