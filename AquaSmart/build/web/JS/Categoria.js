@@ -63,7 +63,7 @@ async function cargarCategorias() {
         document.getElementById("tablaRegistros").innerHTML = cuerpo;
 
         // Agregar eventos a los botones de edición
-        document.querySelectorAll(".btn-editar").forEach(button => {
+        document.querySelectorAll(".btn-categoria").forEach(button => {
             button.addEventListener("click", () => {
                 document.getElementById("txtIdCategoriaEdit").value = button.getAttribute("data-id");
                 document.getElementById("txtNombreEdit").value = button.getAttribute("data-nombre");
