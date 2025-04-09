@@ -8,7 +8,7 @@ public class MySQL {
  Connection conn;
     public Connection open(){
         String user = "root";
-        String password ="Temporal005*";
+        String password ="root";
         
         String url = "jdbc:mysql://127.0.0.1:3306/aquasmart";
         String parametros = "?useSSL=false&useUnicode=true&characterEncoding=utf-8";

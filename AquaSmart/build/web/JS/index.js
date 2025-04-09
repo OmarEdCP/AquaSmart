@@ -135,4 +135,27 @@ function validarToken() {
 
 
 
+/* Animación de Letras */
+document.addEventListener('DOMContentLoaded', function() {
+    // Animación letra por letra para el título
+    const title = document.querySelector('.login-title');
+    if (title) {
+        const text = title.textContent;
+        title.textContent = '';
+        
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.style.setProperty('--char-index', index);
+            title.appendChild(span);
+            
+            // Manejar espacios
+            if (char === ' ') {
+                span.innerHTML = '&nbsp;';
+            }
+        });
+    }
+});
+
+
 

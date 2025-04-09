@@ -167,8 +167,8 @@ async function cargarEmpleados() {
             <div class="flip-card-front text-center d-flex flex-column align-items-center">
                 <img src="${imagen}" class="rounded-circle mb-2" width="180" height="180" alt="Foto de ${empleado.persona.nombre}">
                 <h4 class="mt-2">${empleado.persona.nombre} ${empleado.persona.apellidoP} ${empleado.persona.apellidoM}</h4>
-                <p class="text-muted">${empleado.persona.edad} años</p>
-                <p class="text-muted front-modelo"><i class="bi bi-person-badge"></i> ${empleado.cargo.nombreCargo}</p>
+                <p class="tamaño">${empleado.persona.edad} años</p>
+                <p class="tamaño front-modelo"><i class="bi bi-person-badge"></i> ${empleado.cargo.nombreCargo}</p>
             </div>
 
             <!-- Parte trasera de la tarjeta -->

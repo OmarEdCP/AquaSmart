@@ -258,32 +258,39 @@ if (!v_fecha || !v_total || !v_subtotal || isNaN(v_selectCliente) || isNaN(v_sel
 
 // Evento para actualizar ticket
 document.getElementById("btnActualizar").addEventListener("click", async function () {
-    let ruta = "/AquaSmart/api/ticket/updateTarjeta";
-    let v_numTarjeta = String(document.getElementById('txtNumTarjetaEdit').value);
-    let v_nombreTitular = String(document.getElementById('txtNombreTitularEdit').value);
-    let v_cvv = String(document.getElementById('txtCVVEdit').value);
-    let v_selectCliente = parseInt(document.getElementById('selectClienteEdit').value);
-    let v_selectMes = String(document.getElementById('selectMesEdit').value);
-    let v_selectAnio = String(document.getElementById('selectAnioEdit').value);
-    let v_estatus = document.getElementById("selectEstatusEdit").value;
+    let ruta = "/AquaSmart/api/ticket/updateTicket";
+    let v_id = document.getElementById("txtIdTicket").value;
+ let v_fecha = new Date(document.getElementById('txtFecha').value);
+    let v_total = parseFloat(document.getElementById('txtTotal').value);
+    let v_subtotal = parseFloat(document.getElementById('txtSubtotal').value);
+    let v_selectCliente = parseInt(document.getElementById('selectCliente').value);
+    let v_selectEmpleado = parseInt(document.getElementById('selectEmpleado').value);
+    let v_selectTarjeta = document.getElementById('selectTarjeta').value;
 
     let cliente = {
         idCliente: v_selectCliente
     };
+    
+    let empleado ={
+        idEmpleado: v_selectEmpleado
+    };
+    
+    let tarjeta ={
+        numTarjeta: v_selectTarjeta
+    };
 
     let ticket = {
-        numTarjeta: v_numTarjeta,
-        cvv: v_cvv,
-        mes: v_selectMes,
-        anio: v_selectAnio,
-        nombreTitular: v_nombreTitular,
-        estatus: v_estatus
+        total: v_total,
+        subtotal:v_subtotal,
+        fecha: v_fecha
     };
     ticket.cliente = cliente;
+    ticket.empleado = empleado;
+    ticket.numTarjeta = tarjeta;
 
     try {
         let params = new URLSearchParams();
-        params.append("datosTarjeta", JSON.stringify(ticket));
+        params.append("datosTicket", JSON.stringify(ticket));
 
         const requestOptions = {
             method: 'POST',
@@ -299,7 +306,7 @@ document.getElementById("btnActualizar").addEventListener("click", async functio
         const json = await response.json();
         Swal.fire({
             title: "Actualizado!",
-            text: `Has actualizado exitosamente: ${v_nombreTitular}`,
+            text: `Has actualizado exitosamente: ${v_id}`,
             icon: "success"
         });
 

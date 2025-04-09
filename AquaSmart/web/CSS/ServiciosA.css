@@ -1,85 +1,303 @@
+/* Estilos generales responsivos */
 body {
-                background: url('../img/fondoApp.jpg') no-repeat center center/cover;
-                color: #FFF;
-                font-family: 'Poppins', sans-serif;
-            }
-            .container {
-                backdrop-filter: blur(10px);
-                background: rgba(11, 35, 56, 0.7);
-                padding: 30px;
-                border-radius: 15px;
-            }
-            .card {
-                transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-                border: none;
-                background: linear-gradient(135deg, #1E3C72, #2A5298);
-                border-radius: 20px;
-                box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4), -8px -8px 15px rgba(255, 255, 255, 0.1);
-                padding: 20px;
-                cursor: pointer;
-                overflow: hidden;
-                position: relative;
-            }
-            .card:hover {
-                transform: translateY(-10px);
-                box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), -10px -10px 20px rgba(255, 255, 255, 0.15);
-            }
-            .card i {
-                font-size: 70px;
-                transition: transform 0.4s, color 0.4s;
-                color: #00FFFF;
-            }
-            .card:hover i {
-                transform: rotate(15deg) scale(1.3);
-                color: #00BFFF;
-                text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-            }
-            .card h4 {
-                margin-top: 15px;
-                font-weight: 600;
-                font-size: 1.3rem;
-                transition: color 0.4s, transform 0.4s;
-            }
-            .card:hover h4 {
-                color: #00FFFF;
-                transform: scale(1.1);
-            }
-            header {
-                background: linear-gradient(90deg, #082338, #243571);
-                padding: 20px 0;
-                text-align: center;
-                font-size: 2rem;
-                font-weight: 600;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-                position: relative;
-                animation: fadeInDown 1.2s ease-in-out;
-            }
-            footer {
-                background: linear-gradient(90deg, #243571, #082338);
-                text-align: center;
-                padding: 15px;
-                font-size: 1rem;
-                width: 100%;
-                box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
-                animation: fadeInUp 1.2s ease-in-out;
-            }
-            @keyframes fadeInDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-50px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(50px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+    background: url('../img/Fondo Azul.jpeg') no-repeat center center/cover fixed;
+    color: #FFF;
+    font-family: "Homer Simpson UI";
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-style: italic; /* Texto en cursiva general */
+}
+
+.container {
+    background-color: rgba(103, 149, 147, 0.4); /* #679593 con 70% opacidad */
+    /*backdrop-filter: blur(4px); */
+    -webkit-backdrop-filter: blur(9px);
+    padding: 20px;
+    border-radius: 15px;
+    flex: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-style: italic; /* Texto en cursiva */
+}
+
+/* Estilos para las cards modificadas */
+.card {
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    border: none;
+    background: rgba(157, 192, 194, 0.75) !important; /* #9dc0c2 con 75% opacidad */
+    border-radius: 20px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
+    padding: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Homer Simpson UI";
+    font-style: italic; /* Texto en cursiva */
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.card i {
+    font-size: 70px;
+    transition: transform 0.4s, color 0.4s;
+    color: #00FFFF;
+}
+.card:hover i {
+    transform: rotate(15deg) scale(1.3);
+    color: #00BFFF;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+.card h4 {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    transition: color 0.4s, transform 0.4s;
+    color: white;
+}
+
+.card:hover h4 {
+    transform: scale(1.1);
+    color: white;
+    font-family: "Homer Simpson UI";
+}
+header {
+    background: linear-gradient(90deg, #256d89, #1a5a72);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeInDown 1.2s ease-in-out;
+    font-style: italic; /* Texto en cursiva */
+}
+
+
+footer {
+    background: linear-gradient(90deg, #256d89, #1a5a72);
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.2s ease-in-out;
+    font-style: italic; /* Texto en cursiva */
+}
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Estilo del botón de cerrar sesión */
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #9dc0c2, #8cb1b3) !important;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, #b1d5d7, #9dc0c2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.logout-btn:active {
+    transform: translateY(0);
+}
+
+.logout-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.logout-btn:hover .logout-icon {
+    transform: translateX(3px);
+}
+
+/* Efecto de onda al hacer clic */
+.logout-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.logout-btn:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Contenedor del título */
+.container h2.text-center {
+    position: relative;
+    margin: 30px 0;
+    padding: 20px 0;
+    text-align: center;
+    color: white ; /* Letras originales */
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    border-radius: 10px; /* Opcional */
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.3); /* Sombra para más contraste */
+    font-family: "Homer Simpson UI";
+}
+
+/* Animación de caída de letras */
+@keyframes letterDrop {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Aplicar animación a cada letra */
+.container h2.text-center span {
+    display: inline-block;
+    animation: letterDrop 1s ease forwards;
+    animation-delay: calc(var(--char-index) * 0.1s);
+    opacity: 0;
+}
+
+/* Efecto de máquina de escribir (opcional) */
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+/* Estilos para el carrusel */
+.carousel-container {
+    width: 100%;
+    position: relative;
+    padding: 0 50px;
+}
+
+.cards-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 0;
+    gap: 20px;
+    scrollbar-width: none; /* Para Firefox */
+}
+
+.cards-carousel::-webkit-scrollbar {
+    display: none; /* Para Chrome/Safari */
+}
+
+.carousel-slide {
+    flex: 0 0 calc(33.333% - 14px);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+}
+/* Botones de navegación del carrusel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(37, 109, 137, 0.7) !important; /* #256d89 con 70% opacidad */
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: #256d89 !important;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: 0;
+}
+
+.carousel-btn.next {
+    right: 0;
+}
+
+/* Estilos para los iconos de las cards */
+.card lord-icon {
+    width: 180px !important;
+    height: 180px !important;
+    transition: transform 0.4s;
+}
+
+.card:hover lord-icon {
+    transform: scale(1.1);
+}
