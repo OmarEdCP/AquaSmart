@@ -16,18 +16,21 @@ async function cargarTickets() {
 
         let cuerpo = '';
         data.forEach(ticket => {
+            const estatusTexto = ticket.estatus === 1 ? "Activa" : "Inactiva";
+            const estatusClase = ticket.estatus === 1 ? '' : 'inactive';
             // Formatear fecha
             const fechaFormateada = formatTimestampForInput(ticket.fecha);
             const fechaMostrar = formatTimestampForDisplay(ticket.fecha);
             cuerpo += `
             <div class="col">
-                <div class="flip-card" data-aos="fade-up">
+                <div class="flip-card ${estatusClase}" data-aos="fade-up">
                     <div class="flip-card-inner">
                         <div class="flip-card-front text-center d-flex flex-column align-items-center">
                             <i class="bi bi-receipt service-icon"></i>
                             <h4>Ticket #${ticket.idTicket}</h4>
                             <p class="text-muted">Fecha: ${fechaMostrar}</p>
-                            <span class="badge bg-info">Total: $${Number(ticket.total).toFixed(2)}</span>
+                            <span class="badge bg-info">Total: $${Number(ticket.total).toFixed(2)}</span><br>
+                            <span class="badge ${ticket.estatus === 1 ? 'bg-success' : 'bg-secondary'}">${estatusTexto}</span>
                         </div>
                         <div class="flip-card-back text-center">
                             <div class="card-header">
@@ -77,6 +80,7 @@ async function cargarTickets() {
         document.querySelectorAll(".btn-editar").forEach(button => {
             button.addEventListener("click", () => {
                 document.getElementById("txtFechaEdit").value = formatTimestampForInput(button.getAttribute("data-fecha"));
+                document.getElementById("txtIdTicketEdit").value = button.getAttribute("data-id");
                 document.getElementById("txtSubtotalEdit").value = button.getAttribute("data-subtotal");
                 document.getElementById("txtTotalEdit").value = button.getAttribute("data-total");
                 document.getElementById("selectClienteEdit").value = button.getAttribute("data-cliente");
@@ -183,7 +187,7 @@ document.getElementById("ticketForm").addEventListener("submit", async function 
     let v_selectTarjeta = document.getElementById('selectTarjeta').value;
 
     // Validación de campos vacíos
-if (!v_fecha || !v_total || !v_subtotal || isNaN(v_selectCliente) || isNaN(v_selectEmpleado) || !v_selectTarjeta) {
+    if (!v_fecha || !v_total || !v_subtotal || isNaN(v_selectCliente) || isNaN(v_selectEmpleado) || !v_selectTarjeta) {
         Swal.fire({
             title: "Campos vacíos",
             text: "Todos los campos son obligatorios",
@@ -195,18 +199,18 @@ if (!v_fecha || !v_total || !v_subtotal || isNaN(v_selectCliente) || isNaN(v_sel
     let cliente = {
         idCliente: v_selectCliente
     };
-    
-    let empleado ={
+
+    let empleado = {
         idEmpleado: v_selectEmpleado
     };
-    
-    let tarjeta ={
+
+    let tarjeta = {
         numTarjeta: v_selectTarjeta
     };
 
     let ticket = {
         total: v_total,
-        subtotal:v_subtotal,
+        subtotal: v_subtotal,
         fecha: v_fecha
     };
     ticket.cliente = cliente;
@@ -259,29 +263,32 @@ if (!v_fecha || !v_total || !v_subtotal || isNaN(v_selectCliente) || isNaN(v_sel
 // Evento para actualizar ticket
 document.getElementById("btnActualizar").addEventListener("click", async function () {
     let ruta = "/AquaSmart/api/ticket/updateTicket";
-    let v_id = document.getElementById("txtIdTicket").value;
- let v_fecha = new Date(document.getElementById('txtFecha').value);
-    let v_total = parseFloat(document.getElementById('txtTotal').value);
-    let v_subtotal = parseFloat(document.getElementById('txtSubtotal').value);
-    let v_selectCliente = parseInt(document.getElementById('selectCliente').value);
-    let v_selectEmpleado = parseInt(document.getElementById('selectEmpleado').value);
-    let v_selectTarjeta = document.getElementById('selectTarjeta').value;
+    let v_id = document.getElementById("txtIdTicketEdit").value;
+    let v_fecha = new Date(document.getElementById('txtFechaEdit').value);
+    let v_total = parseFloat(document.getElementById('txtTotalEdit').value);
+    let v_subtotal = parseFloat(document.getElementById('txtSubtotalEdit').value);
+    let v_selectCliente = parseInt(document.getElementById('selectClienteEdit').value);
+    let v_selectEmpleado = parseInt(document.getElementById('selectEmpleadoEdit').value);
+    let v_selectTarjeta = document.getElementById('selectTarjetaEdit').value;
+    let v_selectEstatus = document.getElementById('selectEstatusEdit').value;
 
     let cliente = {
         idCliente: v_selectCliente
     };
-    
-    let empleado ={
+
+    let empleado = {
         idEmpleado: v_selectEmpleado
     };
-    
-    let tarjeta ={
+
+    let tarjeta = {
         numTarjeta: v_selectTarjeta
     };
 
     let ticket = {
+        idTicket: v_id,
         total: v_total,
-        subtotal:v_subtotal,
+        subtotal: v_subtotal,
+        estatus: v_selectEstatus,
         fecha: v_fecha
     };
     ticket.cliente = cliente;
@@ -338,9 +345,9 @@ document.getElementById("btnEliminar").addEventListener("click", async function 
         confirmButtonText: 'Sí, eliminar!'
     }).then(async (result) => {
         if (result.isConfirmed) {
-            let ruta = "/AquaSmart/api/ticket/deleteTarjeta";
-            let v_id = document.getElementById("txtNumTarjetaEdit").value;
-            // Verifica que el ID sea un número válido
+            let ruta = "/AquaSmart/api/ticket/deleteTicket";
+            let v_id = document.getElementById("txtIdTicketEdit").value;
+
             if (isNaN(v_id)) {
                 Swal.fire({
                     title: "Error",
@@ -353,7 +360,7 @@ document.getElementById("btnEliminar").addEventListener("click", async function 
             try {
 
                 let params = new URLSearchParams();
-                params.append("numTarjeta", v_id);
+                params.append("idTicket", v_id);
 
                 const requestOptions = {
                     method: 'POST',
@@ -420,13 +427,13 @@ function search() {
 }
 
 async function limpiar() {
-    document.getElementById('txtNumTarjetaEdit').value;
-    document.getElementById('txtNombreTitularEdit').value;
-    document.getElementById('txtCVVEdit').value;
+    document.getElementById('txtIdTicketEdit').value;
+    document.getElementById('txtFechaEdit').value;
+    document.getElementById('txtTotalEdit').value;
+    document.getElementById('txtSubtotalEdit').value;
     document.getElementById('selectClienteEdit').value;
-    document.getElementById('selectMesEdit').value;
-    document.getElementById('selectAnioEdit').value;
-    document.getElementById("selectEstatusEdit").value;
+    document.getElementById('selectEmpleadoEdit').value;
+    document.getElementById("selectTarjetaEdit").value;
 }
 
 function formatTimestampForInput(timestamp) {

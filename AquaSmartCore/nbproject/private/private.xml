@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/swagc/OneDrive/Documentos/NetBeansProjects/AquaSmartProject/AquaSmartCore/src/aqua/smart/controller/TicketController.java</file>
+        </group>
+>>>>>>> 491616adbeee21f0df24f90f6b8f3a880229f061
     </open-files>
 </project-private>

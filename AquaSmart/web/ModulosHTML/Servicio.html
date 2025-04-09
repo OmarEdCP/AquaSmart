@@ -94,6 +94,76 @@
                     <div class="container text-center">
                         <button type="button" class="btn btn-success btn-agregar-servicio" data-bs-toggle="modal" data-bs-target="#registroModal">
                             <i class="bi bi-plus-circle"></i> Registrar Servicio
+=======
+        <div class="container mt-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="tablaRegistros"></div>
+        </div>
+
+        <!-- Modal de Edición -->
+        <div class="modal fade" id="edicionModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="bi bi-pencil"></i> Editar Servicio</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editarServicioForm">
+                            <div class="mb-3">
+                                <label for="txtIdServicioEdit" class="form-label">
+                                    <i class="bi bi-tag"></i> ID Servicio:
+                                </label>
+                                <input type="text" class="form-control" id="txtIdServicioEdit" readonly>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="selectPropiedadEdit" class="form-label">Propiedad:</label>
+                                        <select id="selectPropiedadEdit" class="form-select" required>
+                                            <option value="">Seleccione una propiedad</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectClienteEdit" class="form-label">Cliente:</label>
+                                        <select id="selectClienteEdit" class="form-select" required>
+                                            <option value="">Seleccione un cliente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="selectCiudadEdit" class="form-label">Ciudad:</label>
+                                        <select id="selectCiudadEdit" class="form-select" required>
+                                            <option value="">Seleccione una ciudad</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectCategoriaEdit" class="form-label">Categoría:</label>
+                                        <select id="selectCategoriaEdit" class="form-select" required>
+                                            <option value="">Seleccione una categoría</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="selectEstatusEdit" class="form-label">Estatus:</label>
+                                <select id="selectEstatusEdit" class="form-select" required>
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="btnEliminar">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                        <button type="button" class="btn btn-warning" id="btnActualizar">
+                            <i class="bi bi-pencil"></i> Actualizar
+>>>>>>> 491616adbeee21f0df24f90f6b8f3a880229f061
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
                         </button>
                     </div>
 

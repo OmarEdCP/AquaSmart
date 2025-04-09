@@ -15,6 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
+import java.sql.Timestamp;
 
 @Path("lectura")
 public class LecturaRest {
@@ -27,6 +28,12 @@ public class LecturaRest {
             Gson gson = new Gson();
             LecturaController cp = new LecturaController();
             Lectura l = gson.fromJson(lectura, Lectura.class);
+        // Verificar si la fecha está vacía o es nula
+        if (l.getFecha() == null) {
+            // Si no se proporciona una fecha, asigna la fecha del servidor
+            l.setFecha(new Timestamp(new java.util.Date().getTime()));  // Convertir Date a Timestamp
+        }
+        
             cp.insertLectura(l);
             String out = gson.toJson(l);
             return Response.status(Response.Status.CREATED).entity(out).build();
@@ -37,7 +44,7 @@ public class LecturaRest {
                     .build();
         }
     }
-
+    
     @Path("getAllLectura")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
