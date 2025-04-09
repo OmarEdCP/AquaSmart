@@ -1,3 +1,5 @@
+/* global Swal */
+
 document.getElementById("estadoForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 

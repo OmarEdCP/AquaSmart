@@ -159,7 +159,7 @@ let clienteFoto = propiedad.cliente.persona.usuario.foto && propiedad.cliente.pe
             <div class="flip-card-front text-center d-flex flex-column align-items-center">
                 <img src="${imagen}" class="rounded mb-2 propiedad-foto" width="180" height="180" alt="Propiedad ${propiedad.idPropiedad}">
                 <h4 class="mt-2">${propiedad.calle} #${propiedad.numExt}</h4>
-                <p class="text-muted">${propiedad.colonia}, ${propiedad.ciudad.nombre}</p>
+                <p class="tamaño">${propiedad.colonia}, ${propiedad.ciudad.nombre}</p>
             </div>
 
             <div class="flip-card-back text-center">

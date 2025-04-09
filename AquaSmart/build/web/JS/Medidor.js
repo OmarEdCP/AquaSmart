@@ -75,7 +75,8 @@ async function cargarMedidores() {
         let cuerpo = "";
 
         data.forEach(medidor => {
-            cuerpo +=`
+            let imagen = "../img/medidor.png";
+            cuerpo += `
 <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center usuario-item" 
      data-nombre="${medidor.nombre}" id="${medidor.idMedidor}">
     <div class="flip-card ${medidor.estatus === 1 ? '' : 'inactive'}" data-aos="fade-up">
@@ -83,7 +84,7 @@ async function cargarMedidores() {
             <!-- Parte frontal - Versión mejorada pero compatible -->
             <div class="flip-card-front">
                 <div class="front-content">
-                    <i class="bi bi-speedometer2 front-icon"></i>
+<img src="${imagen}" alt="Ícono" class="front-icon" style="width: 250px; ">
                     <h4 class="front-title">${medidor.nombre}</h4>
                     <div class="front-modelo">Modelo ${medidor.modelo}</div>
                     <div class="front-precio">
@@ -157,7 +158,7 @@ async function cargarMedidores() {
                     document.getElementById("txtCantidadEdit").value = cantidad;
                     document.getElementById("txtPrecioEdit").value = precio;
                     document.getElementById("selectEstatusEdit").value = estatus;
-                    
+
                     // Mostrar el modal
                     const modal = new bootstrap.Modal(document.getElementById("medidorModal"));
                     modal.show();
@@ -326,7 +327,7 @@ async function limpiar() {
     document.getElementById("txtCantidadEdit").value = "";
     document.getElementById("txtNombreEdit").value = "";
     document.getElementById("txtPrecioEdit").value = "";
-    document.getElementById("selectEstatusEdit").value="";
+    document.getElementById("selectEstatusEdit").value = "";
 }
 
 document.getElementById("btnLimpiar").addEventListener("click", function () {
