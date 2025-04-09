@@ -101,6 +101,70 @@
                     <div class="container mt-4">
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="tablaRegistros"></div>
                     </div>
+=======
+    <!-- Modal de Edición -->
+    <div class="modal fade" id="edicionModal" tabindex="-1" aria-labelledby="edicionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="edicionModalLabel">
+                        <i class="bi bi-tags"></i> Editar Categoría
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editarCategoriaForm">
+                        <div class="mb-3">
+                            <label for="txtIdCategoriaEdit" class="form-label">
+                                <i class="bi bi-tag"></i> ID Categoría:
+                            </label>
+                            <input type="text" class="form-control" id="txtIdCategoriaEdit" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtNombreEdit" class="form-label">
+                                <i class="bi bi-card-text"></i> Nombre de la Categoría:
+                            </label>
+                            <input type="text" class="form-control" id="txtNombreEdit" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtDescripcionEdit" class="form-label">
+                                <i class="bi bi-text-paragraph"></i> Descripción:
+                            </label>
+                            <textarea class="form-control" id="txtDescripcionEdit" rows="3"></textarea>
+                        </div>
+                                                 <div class="mb-3">
+                            <label class="form-label">Precio:</label>
+                            <input type="number" id="txtPrecioEdit" step="any" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="selectEstatusEdit" class="form-label">
+                                <i class="bi bi-toggle-on"></i> Estatus:
+                            </label>
+                            <select id="selectEstatusEdit" class="form-select" required>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="btnEliminar">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </button>
+                            <button type="button" class="btn btn-warning" id="btnActualizar">
+                                <i class="bi bi-pencil"></i> Actualizar
+                            </button>
+                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 491616adbeee21f0df24f90f6b8f3a880229f061
 
                     <!-- Modal de Registro -->
                     <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">

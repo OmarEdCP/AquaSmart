@@ -22,7 +22,6 @@ import java.util.List;
 public class ServicioController {
 
     public Servicio insertServicio(Servicio s) {
-
         System.out.println("LO que llega al statement");
         System.out.println(s.getIdServicio());
         String query = "call sp_insertServicio(?,?,?,?,?)";

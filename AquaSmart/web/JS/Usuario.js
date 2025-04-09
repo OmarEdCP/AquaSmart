@@ -121,7 +121,7 @@ async function cargarUsuarios() {
             <div class="flip-card-front text-center d-flex flex-column align-items-center">
                 <img src="${imagen}" class="rounded-circle mb-2" width="180" height="180" alt="Foto de ${usuario.nombre}">
                 <h4 class="mt-2">${usuario.nombre}</h4>
-            <p class="text-muted front-modelo">${nombreRol} años</p>
+            <p class="text-muted front-modelo">${nombreRol}</p>
             </div>
             <div class="flip-card-back text-center">
              <div class="card-header">

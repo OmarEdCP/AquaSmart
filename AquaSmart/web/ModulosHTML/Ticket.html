@@ -82,12 +82,24 @@
                         </div>
                     </div>
 
+    </head>
+    <body>
+        <header class="bg-primary text-white text-center py-3">
+            <h1>AquaSmart - Gestión de Tickets</h1>
+        </header>
+        <br><br>
+        <!-- Buscador -->
         <div class="container text-center">
             <button type="button" class="btn btn-success btn-agregar-ticket" data-bs-toggle="modal" data-bs-target="#registroModal">
                 <i class="bi bi-plus-circle"></i> Registrar Ticket
             </button>
         </div>
 
+        <div class="container text-center">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registroModal">
+                <i class="bi bi-plus-circle"></i> Registrar Ticket
+            </button>
+        </div>
         <!-- Modal de Registro -->
         <div class="modal fade" id="registroModal" tabindex="-1">
             <div class="modal-dialog">
@@ -150,6 +162,12 @@
                     <div class="modal-body">
                         <form id="editarTicketForm">
                             <div class="mb-3">
+                                <label for="txtIdTicketEdit" class="form-label">
+                                    <i class="bi bi-tag"></i> ID Ticket:
+                                </label>
+                                <input type="text" class="form-control" id="txtIdTicketEdit" readonly>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Fecha:</label>
                                 <input type="datetime-local" id="txtFechaEdit" class="form-control" required>
                             </div>
@@ -179,11 +197,21 @@
                                     <option value="">Seleccione una tarjeta (opcional)</option>
                                 </select>
                             </div>
+                            <div class="mb-3">
+                                <label for="selectEstatusEdit" class="form-label"><i class="bi bi-check-circle"></i> Estatus:</label>
+                                <select id="selectEstatusEdit" class="form-select">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
                         <button type="button" class="btn btn-warning" id="btnActualizar">Actualizar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
                     </div>
                 </div>
             </div>
