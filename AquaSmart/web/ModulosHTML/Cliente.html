@@ -89,127 +89,10 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
-        <!-- Contenedor de Tarjetas -->
-        <div class="container mt-4">
-            <div class="row" id="tablaRegistros"></div>
-        </div>
-
-        <!-- Modal para edición -->
-        <div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="personaModalLabel">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="personaModalLabel">
-                            <i class="bi bi-info-circle"></i> Detalles del Cliente
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="txtIdClienteEdit" class="form-label">
-                                <i class="bi bi-tag"></i> ID Cliente:
-                            </label>
-                            <input type="text" class="form-control" id="txtIdClienteEdit" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtNombreEdit" class="form-label">
-                                <i class="bi bi-person"></i> Nombre:
-                            </label>
-                            <input type="text" class="form-control" id="txtNombreEdit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtApellidoPEdit" class="form-label">
-                                <i class="bi bi-person"></i> Apellido Paterno:
-                            </label>
-                            <input type="text" class="form-control" id="txtApellidoPEdit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtApellidoMEdit" class="form-label">
-                                <i class="bi bi-person"></i> Apellido Materno:
-                            </label>
-                            <input type="text" class="form-control" id="txtApellidoMEdit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtEdadEdit" class="form-label">
-                                <i class="bi bi-calendar"></i> Edad:
-                            </label>
-                            <input type="number" class="form-control" id="txtEdadEdit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtEmailEdit" class="form-label">
-                                <i class="bi bi-envelope"></i> Email:
-                            </label>
-                            <input type="email" class="form-control" id="txtEmailEdit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtTelefonoEdit" class="form-label">
-                                <i class="bi bi-phone"></i> Teléfono:
-                            </label>
-                            <input type="tel" class="form-control" id="txtTelefonoEdit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="selectCiudadEdit" class="form-label">
-                                <i class="bi bi-geo-alt"></i> Ciudad:
-                            </label>
-                            <select id="selectCiudadEdit" class="form-select">
-                                <option value="">Elige la ciudad</option>
-                                
-                            </select>
-                        </div>
-
-                        <!-- Campos de Usuario (mantenidos) -->
-                         
-                            <div class="mb-3">
-                                <label for="txtNombreUEdit" class="form-label"><i class="bi bi-person"></i> Usuario:</label>
-                                <input type="text" class="form-control" id="txtNombreUEdit" required>
-                            </div>
-                        <div class="mb-3">
-                            <label for="txtContraseniaEdit" class="form-label">
-                                <i class="bi bi-lock"></i> Contraseña:
-                            </label>
-                            <input type="password" class="form-control" id="txtContraseniaEdit" required>
-                        </div>
-                        <div class="mb-3">
-                            <h4>Imagen del Usuario</h4>
-                            <img src="" height="200" id="encodedImageEdit" alt="Image preview..." /><br>
-                            <br>
-                            <input type="file" class="form-control form-control-sm" id="txtFotoEdit" accept=".jpg, .jpeg, .png" required>
-                            <br><input type="button" id="encodeButtonEdit" value="Cargar Imagen">
-                        </div>
-                        <div class="mb-3">
-                            <label for="selectRolEdit" class="form-label">
-                                <i class="bi bi-person-badge"></i> Rol:
-                            </label>
-                            <select id="selectRolEdit" class="form-select" disabled>
-                                <option value="1">Cliente</option>
-                                <option value="2">Empleado</option>
-                                <option value="3">Administrador</option>
-                            </select>
-                        </div>
-                         <select id="selectEstatusEdit" class="form-select">
-                                <option value="1">Activo</option>
-                                <option value="0">Inactivo</option>
-                            </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="btnEliminar">
-                            <i class="bi bi-trash"></i> Eliminar
-                        </button>
-                         <button type="button" class="btn btn-warning" id="btnActualizar">
-                            <i class="bi bi-pencil"></i> Actualizar
-                        </button>
-                        <button type="button" class="btn btn-success" id="btnLimpiar">
-                            <i class="bi bi-eraser"></i> Limpiar
-=======
                     <!-- Formulario de Registro -->
                     <div class="container d-flex justify-content-center">
                         <button type="button" class="btn btn-success btn-agregar-cliente" data-bs-toggle="modal" data-bs-target="#registroModal">
                             <i class="bi bi-person-plus"></i> Registrar Cliente
->>>>>>> diseño
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
                         </button>
                     </div>
 
@@ -392,6 +275,9 @@
                                     <button type="button" class="btn btn-success" id="btnLimpiar">
                                         <i class="bi bi-eraser"></i> Limpiar
                                     </button>
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
                                 </div>
                             </div>
                         </div>

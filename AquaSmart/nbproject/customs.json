@@ -1,7 +1,20 @@
 {
     "elements": {
-        "lord-icon": {},
-        "box-icon": {}
+        "lord-icon": {
+            "attributes": {
+                "src": {}
+            }
+        },
+        "box-icon": {
+            "attributes": {
+                "name": {},
+                "type": {},
+                "class": {}
+            }
+        }
     },
-    "attributes": {}
+    "attributes": {
+        "trigger": {},
+        "state": {}
+    }
 }
