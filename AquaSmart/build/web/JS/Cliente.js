@@ -149,7 +149,7 @@ async function cargarClientes() {
             <div class="flip-card-front text-center d-flex flex-column align-items-center">
                 <img src="${imagen}" class="rounded-circle mb-2" width="180" height="180" alt="Foto de ${cliente.persona.nombre}">
                 <h4 class="mt-2">${cliente.persona.nombre} ${cliente.persona.apellidoP} ${cliente.persona.apellidoM}</h4>
-                <p class="text-muted front-modelo">${cliente.persona.edad} años</p>
+                <p class="text front-modelo">${cliente.persona.edad} años</p>
             </div>
 
             <!-- Parte trasera de la tarjeta -->

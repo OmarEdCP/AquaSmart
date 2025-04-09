@@ -1,0 +1,507 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: italic; /* Texto en cursiva */
+}
+
+body {
+    background: url('../img/Fondo Azul.jpeg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Homer Simpson UI";
+}
+
+header {
+    background: linear-gradient(90deg, #256d89, #1a5a72);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeInDown 1.2s ease-in-out;
+    font-style: italic; /* Texto en cursiva */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header img {
+    width: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+header span {
+    font-size: 2rem;
+}
+
+.aqua-text {
+    color: #abd7b9;
+}
+
+.smart-text {
+    color: white;
+}
+
+/* Login Container - Ahora completamente responsive */
+.login-container {
+    animation: cardRebuild 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    transform-origin: center;
+    opacity: 0; /* Inicia invisible */
+    background-color: rgba(103, 149, 147, 0.4); /* #679593 con 70% opacidad */
+    -webkit-backdrop-filter: blur(9px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    /*backdrop-filter: blur(5px); */
+    display: flex;
+    width: 90%;
+    max-width: 950px;
+    margin: 2rem auto;
+    border-radius: 60px;
+    overflow: hidden;
+    min-height: 600px; /* Aumenta la altura mínima */
+    height: 70vh; /* Usa viewport height para hacerlo más grande */
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    animation: glow 8s ease-in-out infinite;
+}
+
+.image-container img {
+    width: auto;
+    height: 100%;
+    max-height: 400px; /* Ajusta este valor según necesites */
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease;
+    animation:
+        floatFast 3s ease-in-out infinite,
+        pulseFast 2s ease-in-out infinite alternate,
+        tiltFast 4s ease-in-out infinite alternate;
+    transform-origin: center;
+    will-change: transform, filter; /* Optimización para animaciones */
+}
+/* Flotación rápida */
+@keyframes floatFast {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.03);
+    }
+}
+
+/* Pulsación rápida */
+@keyframes pulseFast {
+    0% {
+        filter: brightness(100%) saturate(100%) drop-shadow(0 0 5px rgba(157, 192, 194, 0.3));
+    }
+    100% {
+        filter: brightness(115%) saturate(115%) drop-shadow(0 0 15px rgba(157, 192, 194, 0.6));
+    }
+}
+
+/* Inclinación más rápida */
+@keyframes tiltFast {
+    0% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(3deg);
+    }
+}
+
+/* Brillo rápido */
+.image-container {
+    animation: glowFast 4s ease-in-out infinite;
+}
+
+@keyframes glowFast {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(157, 192, 194, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(157, 192, 194, 0.8);
+    }
+}
+
+/* Burbujas rápidas (opcional) */
+.image-container::before {
+    animation: bubbleMoveFast 8s linear infinite;
+}
+
+@keyframes bubbleMoveFast {
+    0% {
+        background-position: 20% 60%;
+    }
+    50% {
+        background-position: 80% 40%;
+    }
+    100% {
+        background-position: 20% 60%;
+    }
+}
+
+/* Efecto de burbujas flotantes (opcional) */
+.image-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%,
+        rgba(255,255,255,0.1) 0%,
+        transparent 30%);
+    animation: bubbleMove 15s linear infinite;
+}
+
+@keyframes bubbleMove {
+    0% {
+        background-position: 30% 70%;
+    }
+    50% {
+        background-position: 70% 30%;
+    }
+    100% {
+        background-position: 30% 70%;
+    }
+}
+
+.form-container {
+    flex: 1;
+    padding: 3rem 6rem; /* Reducir padding vertical, mantener horizontal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; /* Asegurar que ocupe todo el espacio disponible */
+}
+
+.login-title {
+    font-size: 2rem;
+    color:white;
+    margin-bottom: 2rem;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.input-box {
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+.input-box img {
+    width: 50px; /* Ajusta el tamaño de la imagen aquí */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 10px; /* Espacio entre la imagen y el input */
+}
+
+/* Modificaciones para los inputs y botón */
+.input-box input {
+    width: 100%;
+    padding: 15px 20px; /* Aumentar padding horizontal */
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    min-width: 300px; /* Establecer un ancho mínimo */
+}
+
+.input-box input:focus {
+    border-color: #243571;
+    box-shadow: 0 0 8px rgba(36, 53, 113, 0.3);
+    outline: none;
+}
+
+.btn-login {
+    padding: 15px 20px; /* Aumentar padding horizontal */
+    width: 100%;
+    border: none;
+    border-radius: 60px;
+    background: linear-gradient(135deg, #20637c, #09385d) !important;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    min-width: 300px; /* Establecer un ancho mínimo */
+}
+
+.btn-login:hover {
+    background: linear-gradient(90deg, #689c83, #cfedd1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background: linear-gradient(90deg, #256d89, #1a5a72);
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.2s ease-in-out;
+    font-style: italic; /* Texto en cursiva */
+    color: white !important;
+
+}
+
+/* Efecto de gotas de agua optimizado */
+.rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.raindrop {
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(100, 200, 255, 0.7), rgba(80, 180, 240, 0.5));
+    border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+    animation: fall linear infinite;
+    filter: blur(0.5px);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-30px) rotate(10deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(-5deg);
+        opacity: 0;
+    }
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 992px) {
+    .login-container {
+        max-width: 800px;
+    }
+
+    .form-container {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .image-container {
+        height: 200px;
+    }
+
+    .image-container img {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .form-container {
+        border-radius: 0 0 20px 20px;
+    }
+
+    header span {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-container {
+        width: 95%;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .login-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    header img {
+        width: 60px;
+    }
+
+    header span {
+        font-size: 1.5rem;
+    }
+
+    .input-box input {
+        padding: 12px;
+    }
+
+    .btn-login {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .form-container {
+        padding: 1.2rem;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+
+    header .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header img {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Variaciones para gotas individuales */
+.raindrop:nth-child(5n) {
+    width: 10px;
+    height: 14px;
+    animation-duration: 2.2s;
+}
+
+.raindrop:nth-child(3n) {
+    width: 6px;
+    height: 10px;
+    animation-duration: 2.8s;
+}
+
+.raindrop:nth-child(7n) {
+    animation-delay: 0.7s;
+    animation-duration: 2.5s;
+}
+/* Animación para los elementos internos con retraso */
+.form-container, .image-container {
+    animation: fadeIn 0.5s ease-in-out 0.8s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+/* Animación de reconstrucción de tarjeta */
+@keyframes cardRebuild {
+    0% {
+        clip-path: polygon(
+            0% 0%,     /* Esquina superior izquierda */
+            10% 0%,    /* Pequeño desplazamiento derecho */
+            10% 10%,   /* Pequeño desplazamiento abajo */
+            0% 10%,    /* Vuelve al inicio */
+            0% 0%,     /* Cierra el polígono */
+
+            90% 0%,     /* Parte superior derecha */
+            100% 0%,    /* Esquina superior derecha */
+            100% 10%,   /* Pequeño desplazamiento abajo */
+            90% 10%,    /* Pequeño desplazamiento izquierdo */
+            90% 0%,     /* Cierra el polígono */
+
+            0% 90%,     /* Parte inferior izquierda */
+            10% 90%,    /* Pequeño desplazamiento derecho */
+            10% 100%,   /* Esquina inferior izquierda */
+            0% 100%,    /* Vuelve al inicio */
+            0% 90%,     /* Cierra el polígono */
+
+            90% 90%,    /* Parte inferior derecha */
+            100% 90%,   /* Pequeño desplazamiento derecho */
+            100% 100%,  /* Esquina inferior derecha */
+            90% 100%,   /* Pequeño desplazamiento izquierdo */
+            90% 90%     /* Cierra el polígono */
+            );
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    100% {
+        clip-path: polygon(
+            0% 0%,     /* Esquina superior izquierda */
+            100% 0%,   /* Esquina superior derecha */
+            100% 100%, /* Esquina inferior derecha */
+            0% 100%    /* Esquina inferior izquierda */
+            );
+        opacity: 1;
+    }
+}
+/* Animación para letras cayendo */
+@keyframes letterDrop {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Aplicar animación a cada letra del título */
+.login-title span {
+    display: inline-block;
+    animation: letterDrop 0.6s ease forwards;
+    animation-delay: calc(0.8s + (var(--char-index) * 0.05s));
+    opacity: 0;
+}
+
+/* Animación para inputs y botón */
+.input-box, .btn-login {
+    animation: elementDrop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: calc(1s + (var(--elem-index) * 0.15s));
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+@keyframes elementDrop {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Asignar índices dinámicos a los elementos */
+.input-box:nth-child(1) {
+    --elem-index: 0;
+}
+.input-box:nth-child(2) {
+    --elem-index: 1;
+}
+.btn-login {
+    --elem-index: 2;
+}
