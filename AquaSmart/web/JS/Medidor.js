@@ -333,3 +333,12 @@ document.getElementById("btnLimpiar").addEventListener("click", function () {
     limpiar();
 });
 
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+cargarMedidores();

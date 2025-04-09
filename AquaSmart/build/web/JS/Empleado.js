@@ -109,20 +109,7 @@ document.getElementById("empleadoForm").addEventListener("submit", async functio
         cargarEmpleados();
 
         // Limpiar el formulario
-        document.getElementById("txtRfc").value = "";
-        document.getElementById("selectCargo").value = "";
-        document.getElementById("txtNombre").value = "";
-        document.getElementById("txtApellidoM").value = "";
-        document.getElementById("txtApellidoP").value = "";
-        document.getElementById("txtTelefono").value = "";
-        document.getElementById("txtEdad").value = "";
-        document.getElementById("txtEmail").value = "";
-        document.getElementById("selectCiudad").value = "";
-        document.getElementById("txtNombreU").value = "";
-        document.getElementById("txtContrasenia").value = "";
-        document.getElementById("selectRol").value = "";
-        document.getElementById("encodedImage").src = "../img/nada.jpg";
-        document.getElementById("txtFoto").value = "";
+        clean();
 
     } catch (error) {
         console.error("Error:", error);
@@ -542,3 +529,26 @@ async function actualizarOpcionesCargo() {
         selectCargoU.appendChild(optionU);
     });
 }
+
+async function clean(){
+       document.getElementById("txtRfc").value = "";
+        document.getElementById("selectCargo").value = "";
+        document.getElementById("txtNombre").value = "";
+        document.getElementById("txtApellidoM").value = "";
+        document.getElementById("txtApellidoP").value = "";
+        document.getElementById("txtTelefono").value = "";
+        document.getElementById("txtEdad").value = "";
+        document.getElementById("txtEmail").value = "";
+        document.getElementById("selectCiudad").value = "";
+        document.getElementById("txtNombreU").value = "";
+        document.getElementById("txtContrasenia").value = "";
+        document.getElementById("selectRol").value = "";
+        document.getElementById("encodedImage").src = "../img/nada.jpg";
+        document.getElementById("txtFoto").value = "";
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+ cargarEmpleados();

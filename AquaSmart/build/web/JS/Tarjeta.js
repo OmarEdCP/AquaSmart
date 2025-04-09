@@ -367,3 +367,17 @@ async function limpiar() {
     document.getElementById('selectAnioEdit').value;
     document.getElementById("selectEstatusEdit").value;
 }
+
+document.getElementById("btnLimpiar").addEventListener("click", function() {
+ limpiar();
+});
+
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+ cargarTarjetas();

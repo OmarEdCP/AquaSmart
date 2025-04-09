@@ -104,18 +104,7 @@ if(!validarForm()){
         actualizarOpcionesCiudades();
 
         // Limpiar el formulario
-        document.getElementById("txtNombre").value = "";
-        document.getElementById("txtApellidoM").value = "";
-        document.getElementById("txtApellidoP").value = "";
-        document.getElementById("txtTelefono").value = "";
-        document.getElementById("txtEdad").value = "";
-        document.getElementById("txtEmail").value = "";
-        document.getElementById("selectCiudad").value = "";
-        document.getElementById("txtNombreU").value = "";
-        document.getElementById("txtContrasenia").value = "";
-        document.getElementById("selectRol").value = "";
-        document.getElementById("encodedImage").src = "../img/nada.jpg";
-        document.getElementById("txtFoto").value = "";
+clean();
 
     } catch (error) {
         console.error("Error:", error);
@@ -607,3 +596,23 @@ async function validarForm(){
             validarFormulario(event, true);
         });
 }
+async function clean(){
+            document.getElementById("txtNombre").value = "";
+        document.getElementById("txtApellidoM").value = "";
+        document.getElementById("txtApellidoP").value = "";
+        document.getElementById("txtTelefono").value = "";
+        document.getElementById("txtEdad").value = "";
+        document.getElementById("txtEmail").value = "";
+        document.getElementById("selectCiudad").value = "";
+        document.getElementById("txtNombreU").value = "";
+        document.getElementById("txtContrasenia").value = "";
+        document.getElementById("selectRol").value = "";
+        document.getElementById("encodedImage").src = "../img/nada.jpg";
+        document.getElementById("txtFoto").value = "";
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+ cargarClientes();

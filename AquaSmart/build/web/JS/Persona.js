@@ -313,19 +313,7 @@ async function update() {
         actualizarOpcionesCiudades();
 
         // Limpiar el formulario
-        document.getElementById("txtIdPersonaEdit").value = "";
-        document.getElementById("txtNombreEdit").value = "";
-        document.getElementById("txtApellidoMEdit").value = "";
-        document.getElementById("txtApellidoPEdit").value = "";
-        document.getElementById("txtTelefonoEdit").value = "";
-        document.getElementById("txtEdadEdit").value = "";
-        document.getElementById("txtEmailEdit").value = "";
-        document.getElementById("selectCiudadEdit").value = "";
-        document.getElementById("txtNombreUEdit").value = "";
-        document.getElementById("txtContraseniaEdit").value = "";
-        document.getElementById("selectRolEdit").value = "";
-        document.getElementById("encodedImageEdit").src = "../img/nada.jpg";
-        document.getElementById("txtFotoEdit").value = "";
+   limpiar();
 
     } catch (error) {
         console.error("Error:", error);
@@ -380,19 +368,7 @@ async function deleteUsuario() {
         cargarPersonas();
 
         // Limpiar el formulario
-        document.getElementById("txtIdPersonaEdit").value = "";
-        document.getElementById("txtNombreEdit").value = "";
-        document.getElementById("txtApellidoMEdit").value = "";
-        document.getElementById("txtApellidoPEdit").value = "";
-        document.getElementById("txtTelefonoEdit").value = "";
-        document.getElementById("txtEdadEdit").value = "";
-        document.getElementById("txtEmailEdit").value = "";
-        document.getElementById("selectCiudadEdit").value = "";
-        document.getElementById("txtNombreUEdit").value = "";
-        document.getElementById("txtContraseniaEdit").value = "";
-        document.getElementById("selectRolEdit").value = "";
-        document.getElementById("encodedImageEdit").src = "../img/nada.jpg";
-        document.getElementById("txtFotoEdit").value = "";
+        limpiar();
 
     } catch (error) {
         console.error("Error:", error);
@@ -437,8 +413,19 @@ function search() {
 }
 
 async function limpiar() {
-    document.getElementById("txtNombreEdit").value = "";
-    document.getElementById("selectEstadoEdit").value = "";
+        document.getElementById("txtIdPersonaEdit").value = "";
+        document.getElementById("txtNombreEdit").value = "";
+        document.getElementById("txtApellidoMEdit").value = "";
+        document.getElementById("txtApellidoPEdit").value = "";
+        document.getElementById("txtTelefonoEdit").value = "";
+        document.getElementById("txtEdadEdit").value = "";
+        document.getElementById("txtEmailEdit").value = "";
+        document.getElementById("selectCiudadEdit").value = "";
+        document.getElementById("txtNombreUEdit").value = "";
+        document.getElementById("txtContraseniaEdit").value = "";
+        document.getElementById("selectRolEdit").value = "";
+        document.getElementById("encodedImageEdit").src = "../img/nada.jpg";
+        document.getElementById("txtFotoEdit").value = "";
 }
 
 document.getElementById("btnLimpiar").addEventListener("click", function () {
@@ -506,3 +493,13 @@ async function actualizarOpcionesCiudades() {
         selectCiudadU.appendChild(optionU);
     });
 }
+
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+cargarPersonas();

@@ -543,3 +543,13 @@ async function actualizarOpcionesClientes() {
         selectClienteEdit.appendChild(optionU);
     });
 }
+
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+cargarPropiedades();

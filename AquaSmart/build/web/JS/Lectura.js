@@ -1,6 +1,4 @@
 
-
-
 /* global bootstrap, Swal */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -455,3 +453,13 @@ function formatTimestampForDisplay(timestamp) {
         return timestamp;
     }
 }
+
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+cargarLecturas();

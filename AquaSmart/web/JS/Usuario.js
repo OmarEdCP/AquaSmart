@@ -89,6 +89,14 @@ document.getElementById("usuarioForm").addEventListener("submit", async function
     }
 });
 
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
 async function cargarUsuarios() {
     let ruta = "/AquaSmart/api/usuario/getAllUsuario";
 
@@ -229,13 +237,7 @@ async function update() {
         cargarUsuarios();
 
         // Limpiar el formulario
-        document.getElementById("txtIdUsuarioEdit").value = "";
-        document.getElementById("encodedImageEdit").src = "../img/nada.jpg";
-        document.getElementById("txtFotoEdit").value = "";
-        document.getElementById("txtNombreEdit").value = "";
-        document.getElementById("txtContraseniaEdit").value = "";
-        document.getElementById("selectEstatusEdit").value = "";
-        document.getElementById("selectRolEdit").value = "";
+   limpiar();
 
     } catch (error) {
         console.error("Error:", error);
@@ -290,13 +292,7 @@ async function deleteUsuario() {
         cargarUsuarios();
 
         // Limpiar el formulario
-        document.getElementById("txtIdUsuarioEdit").value = "";
-        document.getElementById("encodedImageEdit").src = "../img/nada.jpg";
-        document.getElementById("txtFotoEdit").value = "";
-        document.getElementById("txtNombreEdit").value = "";
-        document.getElementById("txtContraseniaEdit").value = "";
-        document.getElementById("selectEstatusEdit").value = "";
-        document.getElementById("selectRolEdit").value = "";
+   limpiar();
 
     } catch (error) {
         console.error("Error:", error);
@@ -341,8 +337,13 @@ function search() {
 }
 
 async function limpiar() {
-    document.getElementById("txtNombreEdit").value = "";
-    document.getElementById("selectEstadoEdit").value = "";
+ document.getElementById("txtIdUsuarioEdit").value = "";
+        document.getElementById("encodedImageEdit").src = "../img/nada.jpg";
+        document.getElementById("txtFotoEdit").value = "";
+        document.getElementById("txtNombreEdit").value = "";
+        document.getElementById("txtContraseniaEdit").value = "";
+        document.getElementById("selectEstatusEdit").value = "";
+        document.getElementById("selectRolEdit").value = "";
 }
 
 document.getElementById("btnLimpiar").addEventListener("click", function () {
@@ -392,3 +393,5 @@ document.getElementById('encodeButtonEdit').onclick = () => {
         console.log('No se ha seleccionado un archivo ni se ha ingresado texto.');
     }
 };
+
+ cargarUsuarios();

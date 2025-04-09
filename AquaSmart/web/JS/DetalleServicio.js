@@ -250,12 +250,7 @@ document.getElementById("registroModal").addEventListener("submit", async functi
         cargarDetalles();
 
         // Limpiar el formulario
-        document.getElementById("selectServicio").value = "";
-        document.getElementById("selectCliente").value = "";
-        document.getElementById("selectLectura").value = "";
-        document.getElementById("selectTicket").value = "";
-        document.getElementById("txtFecha").value = "";
-        document.getElementById("txtDescripcion").value = "";
+        clean();
 
     } catch (error) {
         console.error("Error:", error);
@@ -509,3 +504,22 @@ function formatTimestampForDisplay(timestamp) {
         return timestamp;
     }
 }
+
+async function clean(){
+    document.getElementById("selectServicio").value = "";
+        document.getElementById("selectCliente").value = "";
+        document.getElementById("selectLectura").value = "";
+        document.getElementById("selectTicket").value = "";
+        document.getElementById("txtFecha").value = "";
+        document.getElementById("txtDescripcion").value = "";
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+document.getElementById("btnLimpiar").addEventListener("click", function() {
+ limpiar();
+});
+
+cargarDetalles();

@@ -12,12 +12,12 @@ async function cargarCategorias() {
         const data = await response.json();
 
         let cuerpo = '';
-       data.forEach(categoria => {
-    const estatusTexto = categoria.estatus === 1 ? "Activo" : "Inactivo";
-    const estatusClase = categoria.estatus === 1 ? 'active' : 'inactive';
-    const iconClass = categoria.estatus === 1 ? 'text-primary' : 'text-secondary';
-    
-    cuerpo += `
+        data.forEach(categoria => {
+            const estatusTexto = categoria.estatus === 1 ? "Activo" : "Inactivo";
+            const estatusClase = categoria.estatus === 1 ? 'active' : 'inactive';
+            const iconClass = categoria.estatus === 1 ? 'text-primary' : 'text-secondary';
+
+            cuerpo += `
 <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center categoria-item" 
      data-nombre="${categoria.nombre}" id="categoria-${categoria.idCategoria}">
     <div class="flip-card ${estatusClase}" data-aos="fade-up">
@@ -58,7 +58,7 @@ async function cargarCategorias() {
         </div>
     </div>
 </div>`;
-});
+        });
 
         document.getElementById("tablaRegistros").innerHTML = cuerpo;
 
@@ -106,11 +106,11 @@ function search() {
 // Evento para el formulario de registro
 document.getElementById("categoriaForm").addEventListener("submit", async function (e) {
     e.preventDefault();
-   
+
     let ruta = "/AquaSmart/api/categoria/insertCategoria";
-    let categoria={
+    let categoria = {
         nombre: document.getElementById("txtNombre").value,
-        descripcion: document.getElementById("txtDescripcion").value  ,
+        descripcion: document.getElementById("txtDescripcion").value,
         precio: parseFloat(document.getElementById("txtPrecio").value)
     };
 
@@ -136,13 +136,11 @@ document.getElementById("categoriaForm").addEventListener("submit", async functi
             icon: "success"
         });
 
-         cargarCategorias();
-        
+        cargarCategorias();
+
         // Limpiar el formulario
-        document.getElementById("txtNombre").value = "";
-        document.getElementById("txtDescripcion").value = "";
-        document.getElementById("txtPrecio").value = "";
-       
+        clean();
+
     } catch (error) {
         console.error("Error:", error);
         Swal.fire({
@@ -161,10 +159,10 @@ document.getElementById("btnActualizar").addEventListener("click", async functio
         nombre: document.getElementById("txtNombreEdit").value,
         descripcion: document.getElementById("txtDescripcionEdit").value,
         estatus: parseInt(document.getElementById("selectEstatusEdit").value),
-         precio: parseFloat(document.getElementById("txtPrecioEdit").value)
+        precio: parseFloat(document.getElementById("txtPrecioEdit").value)
     };
 
-     try {
+    try {
         let params = new URLSearchParams();
         params.append("datosCategoria", JSON.stringify(categoriaData));
 
@@ -189,13 +187,9 @@ document.getElementById("btnActualizar").addEventListener("click", async functio
         // Recargar estados después de insertar
         cargarCategorias();
 
-      // Limpiar el formulario
-                document.getElementById("txtIdCategoriaEdit").value = "";
-                document.getElementById("txtNombreEdit").value = "";
-                document.getElementById("txtDescripcionEdit").value = "";
-                document.getElementById("selectEstatusEdit").value = "";
-                document.getElementById("txtPrecioEdit").value = "";
-        
+        // Limpiar el formulario
+                limpiar();
+
     } catch (error) {
         console.error("Error:", error);
         Swal.fire({
@@ -221,7 +215,7 @@ document.getElementById("btnEliminar").addEventListener("click", async function 
     }).then(async (result) => {
         if (result.isConfirmed) {
             let ruta = "/AquaSmart/api/categoria/deleteCategoria";
-          
+
             // Verifica que el ID sea un número válido
             if (isNaN(idCategoria)) {
                 Swal.fire({
@@ -256,13 +250,10 @@ document.getElementById("btnEliminar").addEventListener("click", async function 
                 });
 
 
-               cargarCategorias();
+                cargarCategorias();
 
                 // Limpiar el formulario
-                document.getElementById("txtIdCategoriaEdit").value = "";
-                document.getElementById("txtNombreEdit").value = "";
-                document.getElementById("txtDescripcionEdit").value = "";
-                document.getElementById("selectEstatusEdit").value = "";
+                limpiar();
 
             } catch (error) {
                 console.error("Error:", error);
@@ -275,3 +266,26 @@ document.getElementById("btnEliminar").addEventListener("click", async function 
         }
     });
 });
+
+async function limpiar() {
+    document.getElementById("txtIdCategoriaEdit").value = "";
+    document.getElementById("txtNombreEdit").value = "";
+    document.getElementById("txtDescripcionEdit").value = "";
+    document.getElementById("selectEstatusEdit").value = "";
+}
+
+document.getElementById("btnLimpiar").addEventListener("click", function () {
+    limpiar();
+});
+
+
+async function clean(){
+    document.getElementById("txtNombre").value = "";
+        document.getElementById("txtDescripcion").value = "";
+        document.getElementById("txtPrecio").value = "";
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+cargarCategorias();

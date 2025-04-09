@@ -436,6 +436,10 @@ async function limpiar() {
     document.getElementById("selectTarjetaEdit").value;
 }
 
+document.getElementById("btnLimpiar").addEventListener("click", function() {
+ limpiar();
+});
+
 function formatTimestampForInput(timestamp) {
     if (!timestamp)
         return "";
@@ -494,3 +498,13 @@ function formatTimestampForDisplay(timestamp) {
         return timestamp;
     }
 }
+
+async function clean(){
+    
+}
+
+document.getElementById("btnClean").addEventListener("click", function () {
+    clean();
+});
+
+cargarTickets();
