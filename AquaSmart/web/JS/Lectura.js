@@ -91,6 +91,7 @@ async function cargarLecturas() {
         let cuerpo = "";
 
         data.forEach(lectura => {
+            let imagen = "../img/medidor.png";
             const fechaFormateada = formatTimestampForInput(lectura.fecha);
             const fechaMostrar = formatTimestampForDisplay(lectura.fecha);
             cuerpo += `
@@ -101,11 +102,11 @@ async function cargarLecturas() {
             <!-- Parte frontal - Versión para Lectura -->
             <div class="flip-card-front">
                 <div class="front-content">
-                    <i class="bi bi-speedometer2 front-icon"></i>
+            <img src="${imagen}" alt="Ícono" class="front-icon" style="width: 250px; ">
                     <h4 class="front-title">Medidor: ${lectura.medidor.nombre}</h4>
                     <div class="front-modelo">Lectura #${lectura.idLectura}</div>
                     <div class="front-precio">
-                        <span class="precio-value">${lectura.flujo}</span>
+                        <span class="precio-value  tamaño" >${lectura.flujo}</span>
                         <span class="precio-currency">L/min</span>
                     </div>
                 </div>

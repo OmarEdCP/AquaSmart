@@ -12,24 +12,24 @@ async function cargarCategorias() {
         const data = await response.json();
 
         let cuerpo = '';
-        data.forEach(categoria => {
-            const estatusTexto = categoria.estatus === 1 ? "Activo" : "Inactivo";
-            const estatusClase = categoria.estatus === 1 ? 'active' : 'inactive';
-            const iconClass = categoria.estatus === 1 ? 'text-primary' : 'text-secondary';
-
-            cuerpo += `
+            
+       data.forEach(categoria => {
+           let imagen = "../img/cate.png";
+    const estatusTexto = categoria.estatus === 1 ? "Activo" : "Inactivo";
+    const estatusClase = categoria.estatus === 1 ? 'active' : 'inactive';
+    const iconClass = categoria.estatus === 1 ? 'text-primary' : 'text-secondary';
+    
+    cuerpo += `
 <div class="col-lg-4 col-md-6 mb-4 d-flex justify-content-center categoria-item" 
      data-nombre="${categoria.nombre}" id="categoria-${categoria.idCategoria}">
     <div class="flip-card ${estatusClase}" data-aos="fade-up">
         <div class="flip-card-inner">
             <!-- Parte frontal de la tarjeta -->
             <div class="flip-card-front text-center d-flex flex-column align-items-center">
-                <div class="icon-container bg-light rounded-circle mb-3">
-                    <i class="bi bi-tags ${iconClass}" style="font-size: 3rem;"></i>
-                </div>
+            <img src="${imagen}" alt="Ícono" class="front-icon" style="width: 180px; ">
                 <h4 class="mt-2">${categoria.nombre}</h4>
-                <p class="text-muted">${estatusTexto}</p>
-            <span class="badge bg-info">Precio: $${categoria.precio}</span>
+                <p class="tamaño">${estatusTexto}</p>
+            <span class="badge bg-cafe tamaño">Precio: $${categoria.precio}</span>
             </div>
 
             <!-- Parte trasera de la tarjeta -->
